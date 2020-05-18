@@ -25,7 +25,9 @@
                   action="tour_list_action"/>
          <menuitem id="baogiasp_menu" name="Báo giá sản phẩm" sequence="3" parent="sanphamkhac_menu"
                   action="tour_list_action"/>
-         <menuitem id="datsp_menu" name="Đặt sản phẩm" sequence="4" parent="sanphamkhac_menu"
-                  action="tour_list_action"/>
+<!--         <menuitem id="datsp_menu" name="Đặt sản phẩm" sequence="4" parent="sanphamkhac_menu"-->
+<!--                  action="tour_list_action"/>-->
+        <menuitem id="datsp_menu" name="Đặt sản phẩm" sequence="4" parent="sanphamkhac_menu"-->
+<!--                  action="tour_list_action"/>-->
     </data>
 </odoo>
