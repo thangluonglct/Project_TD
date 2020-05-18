@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="tour_list_action">
+            <field name="name">Quotations</field>
+            <field name="res_model">tuandung.kinhdoanh</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first course
+                </p>
+            </field>
+            <field name="ten"/>
+        </record>
+        <menuitem id="main_dulich_menu" name="Du lịch &amp; Lữ hành"/>
+        <menuitem id="dulich_menu" name="Kinh doanh" sequence="1"
+                  parent="main_dulich_menu"/>
+        <menuitem id="tour_menu" name="Tour" sequence="450" parent="dulich_menu"
+                  action="tour_list_action"/>
+          <menuitem id="baogia_tour_menu" name="Báo giá Tour" sequence="1" parent="tour_menu"
+                  action="tour_list_action"/>
+        <menuitem id="dat_tour_menu" name="Đặt Tour" sequence="2" parent="tour_menu"
+                  action="tour_list_action"/>
+        <menuitem id="sanphamkhac_menu" name="Sản phẩm khác" sequence="450" parent="dulich_menu"
+                  action="tour_list_action"/>
+         <menuitem id="baogiasp_menu" name="Báo giá sản phẩm" sequence="3" parent="sanphamkhac_menu"
+                  action="tour_list_action"/>
+         <menuitem id="datsp_menu" name="Đặt sản phẩm" sequence="4" parent="sanphamkhac_menu"
+                  action="tour_list_action"/>
+    </data>
+</odoo>

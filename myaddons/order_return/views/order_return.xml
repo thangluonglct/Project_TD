@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="order_return_list" model="ir.ui.view">
+            <field name="name">Order Return</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/group/group/field[@name='partner_id']" position="after">
+                    <field name="don_tra_hang" invisible="1"/>
+                    <field name="sale_order" attrs="{'invisible': [('don_tra_hang', '=', False)]}"
+                           options="{'no_create_edit': True}"/>
+                    <field name="ly_do" attrs="{'invisible': [('don_tra_hang', '=', False)]}"/>
+                    <field name="kho_luutru" attrs="{'invisible': [('don_tra_hang', '=', False)]}"/>
+                </xpath>
+                <xpath expr="//sheet/group/group/field[@name='date_order']" position="before">
+                    <field name="thoigian_th" attrs="{'invisible': [('don_tra_hang', '=', False)]}"/>
+                </xpath>
+                <xpath expr="//sheet/group/group/field[@name='date_order']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('don_tra_hang', '=', True)]}</attribute>
+                </xpath>
+                <xpath expr="//sheet/group/group/field[@name='validity_date']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('don_tra_hang', '=', True)]}</attribute>
+                </xpath>
+                <xpath expr="//sheet/group/group/field[@name='payment_term_id']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('don_tra_hang', '=', True)]}</attribute>
+                </xpath>
+                <xpath expr="//form/header" position="attributes">
+                    <attribute name="attrs">{'invisible': [('don_tra_hang', '=', True)]}</attribute>
+                </xpath>
+                <xpath expr="//sheet" position="before">
+                    <header attrs="{'invisible': [('don_tra_hang', '=', False)]}">
+                       <button name="order_return" type="object" string="Xác nhận" attrs="{'invisible':[('state_return','=','order_return')]}"/>
+                        <field name="state_return" widget="statusbar" statusbar_visible="draft,order_return"/>
+                    </header>
+                </xpath>
+                 <xpath expr="//field[@name='order_line']/tree" position="attributes">
+                    <attribute name="editable">bottom</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="order_return_list_action">
+            <field name="name">Order Return</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('don_tra_hang','=',True)]</field>
+            <field name="context">{'default_don_tra_hang': True}</field>
+        </record>
+        <menuitem id="order_return_menu" name="Order Return"
+                  parent="sales_team.menu_base_partner"/>
+        <menuitem id="order_return" name="Order Return"
+                  parent="order_return_menu"
+                  action="order_return_list_action"/>
+    </data>
+</odoo>
